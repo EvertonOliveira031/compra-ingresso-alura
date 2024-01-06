@@ -1,45 +1,58 @@
-function comprar (){
+function comprar() {
     let tipo = document.getElementById('tipo-ingresso');
-    let qtd = parseInt(document.getElementById('qtd').value);
+    let qtdInput = document.getElementById('qtd');
+    let qtd = parseInt(qtdInput.value);
 
-    if (tipo.value == 'pista'){
+
+    // Verificar se a quantidade é um número positivo
+    if (isNaN(qtd) || qtd <= 0) {
+        alert('Por favor, insira uma quantidade válida.');
+        return;
+    }
+
+
+    if (tipo.value == 'pista') {
         comprarPista(qtd);
-    }else if (tipo.value == 'superior'){
+    } else if (tipo.value == 'superior') {
         comprarSuperior(qtd);
-    }else{
+    } else {
         comprarInferior(qtd);
     }
 }
 
-function comprarPista(qtd){
+
+function comprarPista(qtd) {
     let qtdPista = parseInt(document.getElementById('qtd-pista').textContent);
-    if (qtd > qtdPista){
+    if (qtd > qtdPista) {
         alert('Quantidade indisponível para tipo pista');
-    }else{
+    } else {
         qtdPista = qtdPista - qtd;
-        document.getElementById('qtd-pista').textContent = qtdPista
+        document.getElementById('qtd-pista').textContent = qtdPista;
         alert('Compra realizada com sucesso!');
     }
 }
 
-function comprarSuperior(qtd){
+
+function comprarSuperior(qtd) {
     let qtdSuperior = parseInt(document.getElementById('qtd-superior').textContent);
-    if (qtd > qtdSuperior){
+    if (qtd > qtdSuperior) {
         alert('Quantidade indisponível para tipo superior');
-    }else{
+    } else {
         qtdSuperior = qtdSuperior - qtd;
-        document.getElementById('qtd-superior').textContent = qtdSuperior
+        document.getElementById('qtd-superior').textContent = qtdSuperior;
         alert('Compra realizada com sucesso!');
     }
 }
 
-function comprarInferior(qtd){
+
+function comprarInferior(qtd) {
     let qtdInferior = parseInt(document.getElementById('qtd-inferior').textContent);
-    if (qtd > qtdInferior){
+    if (qtd > qtdInferior) {
         alert('Quantidade indisponível para tipo inferior');
-    }else{
+    } else {
         qtdInferior = qtdInferior - qtd;
-        document.getElementById('qtd-inferior').textContent = qtdInferior
+        document.getElementById('qtd-inferior').textContent = qtdInferior;
         alert('Compra realizada com sucesso!');
     }
 }
+
